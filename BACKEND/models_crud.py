@@ -12,6 +12,14 @@ def create_user_tables():
         )ENGINE=InnoDB;
     """)
 
+    user_table_sql = text("""
+        CREATE TABLE IF NOT EXISTS user (
+            userId INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(50),
+            email VARCHAR(100)
+        )ENGINE=INNODB;
+    """)
+
     task_progress_sql = text("""
         CREATE TABLE IF NOT EXISTS TaskProgress (
             progressId INT AUTO_INCREMENT PRIMARY KEY,
@@ -24,18 +32,10 @@ def create_user_tables():
         )ENGINE=INNODB;
     """)
 
-    user_table_sql = text("""
-        CREATE TABLE IF NOT EXISTS user (
-            userId INT AUTO_INCREMENT PRIMARY KEY,
-            username VARCHAR(50),
-            email VARCHAR(100)
-        )ENGINE=INNODB;
-    """)
-
     with db.engine.begin() as connection:
         connection.execute(user_task_sql)
-        connection.execute(task_progress_sql)
         connection.execute(user_table_sql)
+        connection.execute(task_progress_sql)
  
 def initialize_database():
     """Create user tables if they don't exist before the first request."""
