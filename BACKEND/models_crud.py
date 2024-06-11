@@ -50,11 +50,58 @@ def create_task(name, description, points, image_url):
             VALUES (:name, :description, :points, :image_url)
         """)
 
-        db.session.execute(create_task_sql, {'name': name, 'description': description, 'points': points, 'image_url': image_url})
-        task = db.session.execute(text('SELECT LAST_INSERT_ID()')).fetchone()[0]
+        result = db.session.execute(create_task_sql, {
+            'name': name,
+            'description': description,
+            'points': points,
+            'image_url': image_url
+        })
+
         db.session.commit()
 
-        return task
+        return {'taskId': result.lastrowid,
+                'name': name,
+                'description': description,
+                'points': points,
+                'image_url': image_url
+        }
+    
+    except Exception as e:
+        db.session.rollback()
+        raise e
+
+# Update task by task_id
+def update_task(taskId, name, desc, points, image_url):
+    try:
+        update_task_sql = text("""
+        UPDATE Task
+        SET name = :name,
+            description = :desc,
+            points = :points,
+            image_url = :image_url
+        WHERE
+            taskId = :taskId
+        """)
+
+        result = db.session.execute(update_task_sql, {
+            'taskId': taskId,
+            'name': name,
+            'desc': desc,
+            'points': points,
+            'image_url': image_url
+        })
+        
+        db.session.commit()
+        
+        if result.rowcount > 0:
+            return {"taskId": taskId,
+                    'name': name,
+                    'desc': desc,
+                    'points': points,
+                    'image_url': image_url
+            }
+        else:
+            return {"error": "update error"}
     except Exception as e:
         db.session.rollback()
         raise e
