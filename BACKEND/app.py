@@ -71,7 +71,16 @@ def create_new_task ():
 
     try:
         task = create_task(name, desc, points, image_url)
-        return jsonify({"message": "Task created successfully", "task": task}), 201
+        return jsonify({
+            "message": "Task created successfully",
+            "task": {
+                "taskId": task["taskId"],
+                "name": task["name"],
+                "description": task["desc"],
+                "points": task["points"],
+                "image_url": task["image_url"]
+            }
+        }), 201
     
     except Exception as e:
         return jsonify({"message": "Task creation failed", "details": str(e)}), 500
@@ -100,7 +109,16 @@ def update_task_by_id(taskId):
         if 'error' in task:
             return jsonify(task), 400
         else:
-            return jsonify(task), 200
+            return jsonify({
+                "message": "Task created successfully",
+                "task": {
+                    "taskId": task["taskId"],
+                    "name": task["name"],
+                    "description": task["desc"],
+                    "points": task["points"],
+                    "image_url": task["image_url"]
+                }
+            }), 200
     except Exception as e:
         return jsonify({'message': 'Task update failed', 'details': str(e)}), 400
 

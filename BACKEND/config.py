@@ -3,7 +3,7 @@ import os
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'a_default_secret_key'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://freedb_suser:5F5GKq%40mFvm4p2p@sql.freedb.tech:3306/freedb_mydatabase'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://freedb_suser:gHh#?UB&zk7%40$MG@sql.freedb.tech:3306/freedb_mydatabase'
     # Example MySQL connection string
     # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'mysql+pymysql://user:password@http://localhost:3306/mydatabase'
     # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'mysql+pymysql://root:example@dbMySQL:3306/mydatabase2'

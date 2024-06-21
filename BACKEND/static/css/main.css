@@ -1,8 +1,97 @@
+/* reset css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
 html,
 body {
     font-family: Arial, Helvetica, sans-serif;
     height: 100%;
     position: relative;
-    margin:0px;
 }
 
+.content {
+    display: grid;
+    grid-template-rows: 45px 1fr 45px;
+    gap: 1px;
+}
+
+.header {
+    display: grid;
+    background-color: rgb(79, 121, 248);
+    grid-template-rows: auto auto;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.header > h1 {
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    justify-content: center;
+}
+
+.login_button {
+    text-decoration: None;
+    border: 1px solid gray;
+    background-color: lightgray;
+    justify-self: end;
+    align-self: end;
+    margin-right: 20px;
+    margin-bottom: 5px;
+    margin-top: -35px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.login_button:hover {
+    color: rgb(229, 241, 7);
+}
+
+.main_body a {
+    text-decoration: none;
+    color: rgb(227, 22, 49);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.main_body a:hover {
+    color: rgb(229, 241, 7);
+}
+
+.main_body {
+    display: grid;
+    grid-template-columns: 175px 1fr 200px;
+    height: 100vh;
+}
+
+.left_body, .right_body {
+    background-color: lightgray;
+    border-radius: 5px;
+    padding: 10px;
+    color: rgb(227, 22, 49);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.main_body td {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.main_body [class*="data_"] {
+    border: 1px solid black;
+}
+
+.left_bar li {
+    list-style-type: none;
+    border: 1px;
+    padding: 15px;
+}
+
+.footer {
+    background-color: lightgray;
+    padding: 10px;
+    text-align: center;
+}

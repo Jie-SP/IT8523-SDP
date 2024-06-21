@@ -1,0 +1,24 @@
+<!-- Inherits from layout.html -->
+{% extends "layout.html" %}
+<!-- The block content replace the one encapsulated in  layout.html -->
+{% block title %}Login{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="../static/css/login.css">
+{% endblock %}
+
+{% block content %}
+<div class="login">
+    <form id="login-form" class="login_form">
+        <h2>Login</h2>
+        <div class="form-group">
+            <label for="login-email">Email:</label>
+            <input type="email" id="login-email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" name="password" required>
+        </div>
+        <button type="submit" class="btn">Login</button>
+    </form>
+</div>
+{% endblock %}
